@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Park Map</title>
+    <link rel="stylesheet" href="./src/output.css"> 
+   
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: hsla(200,40%,30%,.4);
+            background-image:   
+                url('https://78.media.tumblr.com/cae86e76225a25b17332dfc9cf8b1121/tumblr_p7n8kqHMuD1uy4lhuo1_540.png'), 
+                url('https://78.media.tumblr.com/66445d34fe560351d474af69ef3f2fb0/tumblr_p7n908E1Jb1uy4lhuo1_1280.png'),
+                url('https://78.media.tumblr.com/8cd0a12b7d9d5ba2c7d26f42c25de99f/tumblr_p7n8kqHMuD1uy4lhuo2_1280.png'),
+                url('https://78.media.tumblr.com/5ecb41b654f4e8878f59445b948ede50/tumblr_p7n8on19cV1uy4lhuo1_1280.png'),
+                url('https://78.media.tumblr.com/28bd9a2522fbf8981d680317ccbf4282/tumblr_p7n8kqHMuD1uy4lhuo3_1280.png');
+            background-repeat: repeat-x;
+            background-position: 
+                0 20%,
+                0 100%,
+                0 50%,
+                0 100%,
+                0 0;
+            background-size: 
+                2500px,
+                800px,
+                500px 200px,
+                1000px,
+                400px 260px;
+            animation: para 50s infinite linear;
+        }
+
+        @keyframes para {
+            100% {
+                background-position: 
+                    -5000px 20%,
+                    -800px 95%,
+                    500px 50%,
+                    1000px 100%,
+                    400px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-[#0A0908] text-[#F1FAEE] shadow-lg">
+        <nav class="container mx-auto flex justify-between items-center py-2 px-4">
+          <div class="flex space-x-6">
+            <a href="home.html" class="text-l font-semibold hover:text-[#F1FAEE] hover:scale-110 transition-transform duration-200">Home</a>
+            <a href="ride_list.html" class="text-l font-semibold hover:text-[#F1FAEE] hover:scale-110 transition-transform duration-200">Rides</a>
+            <a href="mapNav.html" class="text-l font-semibold hover:text-[#F1FAEE] hover:scale-110 transition-transform duration-200">Map</a>
+            <a href="help.html" class="text-l font-semibold hover:text-[#F1FAEE] hover:scale-110 transition-transform duration-200">Help</a>
+            <a href="favorites.html" class="text-l font-semibold hover:text-[#F1FAEE] hover:scale-110 transition-transform duration-200">Favorites</a>
+          </div>
+      
+          <div class="flex space-x-4">
+            <a href="settings.html" class="bg-[#22333B] text-[#F1FAEE] px-4 py-2 rounded-full shadow-lg hover:scale-105 hover:bg-[#F1FAEE] hover:text-black hover:shadow-xl transition-transform duration-200">Settings</a>
+    
+            <a href="login.html" class="bg-[#22333B] text-[#F1FAEE] px-4 py-2 rounded-full shadow-lg hover:scale-105 hover:bg-[#F1FAEE] hover:text-black hover:shadow-xl transition-transform duration-200">Sign In</a>
+          </div>
+        </nav>
+      </header>
+    <div class="w-full h-screen flex flex-col items-center justify-center relative">
+        <div id="initialContent" class="absolute inset-0 flex flex-col items-center justify-center space-y-4 z-10">
+            <h1 class="text-[#F1FAEE] text-5xl bg-black md:text-5xl font-bold drop-shadow-lg px-4 py-2 rounded-lg">Welcome to the Most</h1>
+            <h2 class="text-[#F1FAEE] text-4xl bg-black md:text-6xl font-bold drop-shadow-lg px-4 py-2 rounded-lg">Magical Place on Earth!</h2>
+            <p class="text-[#F1FAEE] text-lg bg-black bg-opacity-50 px-4 py-2 rounded-lg">Click here to begin your journey!</p>
+            <a href="ride_list.html" id="ridesButton" class="relative bg-[#22333B] text-[#F1FAEE] px-6 py-3 rounded-3xl text-lg font-semibold shadow-md hover:scale-110 transition-transform duration-200 overflow-hidden">
+                <span class="absolute inset-0 opacity-50 animate-pulse"></span>
+                <span class="relative">Rides</span>
+            </a>
+        </div>
+    </div>
+
+
+   
+</body>
+</html>

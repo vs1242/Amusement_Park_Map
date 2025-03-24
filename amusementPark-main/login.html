@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="./src/output.css"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <!-- Firebase SDK (Modular) -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+
+        // Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBn7xE-jaEuixzyDROnbHrQo6-YtOR5LaU",
+            authDomain: "amusement-park-4039d.firebaseapp.com",
+            projectId: "amusement-park-4039d",
+            storageBucket: "amusement-park-4039d.appspot.com",
+            messagingSenderId: "625618396056",
+            appId: "1:625618396056:web:ff2907be3a1958ed9041ed",
+            measurementId: "G-6QHBHT0PPE"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const provider = new GoogleAuthProvider();
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const loginForm = document.getElementById('loginForm');
+            const googleSignInButton = document.getElementById('googleSignIn');
+
+            // Email/Password Login
+            loginForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+
+                try {
+                    await signInWithEmailAndPassword(auth, email, password);
+                    alert("Login successful! Redirecting to homepage...");
+                    window.location.href = "home.html";
+                } catch (error) {
+                    alert("Error: " + error.message);
+                }
+            });
+
+            // Google Sign-In
+            googleSignInButton.addEventListener('click', async () => {
+                try {
+                    const result = await signInWithPopup(auth, provider);
+                    alert(`Welcome ${result.user.displayName}! Redirecting to homepage...`);
+                    window.location.href = "home.html";
+                } catch (error) {
+                    alert("Error: " + error.message);
+                }
+            });
+        });
+    </script>
+
+<style>
+    body {
+        background: #D9D9D9; /* Lighter grey background for the body */
+        color: #333; /* Dark text color for contrast */
+        font-family: 'Poppins', sans-serif; /* Ensure consistent font */
+    }
+
+    .login-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90vh;
+    }
+
+    .login-box {
+        background-color: #F2F2F2; /* Light grey for the login box */
+        
+        border-radius: 10px;
+        box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.2);
+        padding: 40px;
+        width: 400px;
+        text-align: center;
+        opacity: 0;
+        transform: translateY(-20px);
+        animation: fadeIn 0.8s ease-out forwards;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .login-box h3 {
+        margin-bottom: 24px;
+        color: #1b1b1b; /* Dark text color for the heading */
+        font-size: 24px;
+    }
+
+    .login-box input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: 1px solid #ccc; /* Light border for inputs */
+        border-radius: 5px;
+        background-color: #FFFFFF; /* White background for inputs */
+        color: #333; /* Dark text color for inputs */
+    }
+
+    .login-box input::placeholder {
+        color: #B0B0B0; /* Placeholder text color */
+    }
+
+    .login-box button {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        background-color: #22333B; /* Bluish Grey for the login button */
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .login-box button:hover {
+        background-color: #0A0908; /* Slightly darker green on hover */
+    }
+
+    .social {
+        margin: 20px 0;
+    }
+
+    /* Google Sign-in Button Styling */
+    .social button {
+        background-color: #0A0908; /* Google Black */
+        color: white;
+        border: none;
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .social button:hover {
+        background-color: #C1351D; /* Darker red on hover */
+    }
+
+    .form p {
+        margin-top: 20px;
+        color: #333; /* Dark text color for the paragraph */
+    }
+
+    .form a {
+        color: #22333B; /* Bluish Grey link color */
+        text-decoration: none;
+    }
+
+    .form a:hover {
+        text-decoration: underline;
+    }
+
+    /* Header Styling */
+     /* Header Styling */
+     header {
+            background-color: #22333B;
+            color: #e7e5e4;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+            position: relative;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+
+      
+</style>
+</head>
+
+<body>
+     <!-- Background blur image -->
+     <div class="fixed top-0 left-0 w-full h-full bg-[#EAE0D5] bg-cover bg-center filter blur-md -z-10"></div>
+</div>
+<!-- Header -->
+<header>Amusement Park Navigator - Login</header>
+    
+    
+
+    <div class="login-container">
+        <div class="login-box">
+            <h3>Login</h3>
+
+            <form id="loginForm">
+                <input type="email" placeholder="Email" id="email" required>
+                <input type="password" placeholder="Password" id="password" required>
+                <button type="submit">Login Here</button>
+            </form>
+
+            <div class="social">
+                <button id="googleSignIn" type="button">Sign in with Google</button>
+            </div>
+
+            <div class="form">
+                <p>Don't have an account? <a href="signup.html">Sign up Here</a></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
